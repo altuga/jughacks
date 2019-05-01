@@ -1,9 +1,11 @@
 package com.airhacks.ping.boundary;
 
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.enterprise.concurrent.ManagedExecutorService;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 /**
@@ -25,6 +27,11 @@ public class PingResource {
                 + " " + pingBean.getClass().getName() 
                 + " " + executorService.getClass().getName();
         
+    }
+    
+    @POST
+    public Ping save(Ping ping) {
+        return pingBean.save(ping);
     }
 
 }
